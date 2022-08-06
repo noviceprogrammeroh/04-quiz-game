@@ -1,0 +1,48 @@
+.body {
+    padding: auto;
+    margin: auto;
+}
+
+
+.span-cointaner,
+.view-score,
+.timer {
+    display: inline-block;
+    /* margin: 10px 0px 0px 300px; */
+    font-size: 20px;
+    margin: -90px 25px 0px 25px;
+
+}
+
+
+.view-score {
+    float: left;
+}
+
+.timer {
+    float: right;
+}
+
+.header {
+    display: block;
+    justify-content: center;
+    margin: 130px;
+}
+
+.header-div {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    text-align: center;
+
+}
+
+#header-first-paragraph {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.start-quiz-button {
+    margin: 50px;
+}
