@@ -5,44 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz Game</title>
     <link rel="stylesheet" href="./02-Challenge/Assets/styles.css" />
 </head>
 
 <body>
     <div class="span-container">
-     <span class="view-score">View Scores</span>
-     <span class="timer">Time: 0</span>
+        <span id="view-score">View High Scores</span>
+        <span id="timer">Time : </span>
     </div>
-    
+
     <header class="header">
         <div class="header-div">
-            <h1 class="h1-class">Coding Quiz 02-Challenge</h1>
-            <br id="header-first-paragraph">Try to answer the following code-related questions within the time limit.
-            Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+            <h1 id="h1-header-class">Coding Quiz Challenge</h1>
+            <p id="header-first-paragraph">Try to answer the following code-related questions within the time limit.
+                </br>
+                </br>
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
             </p>
-            <button class="start-quiz-button">Start Quiz</button>
         </div>
     </header>
 
     <main>
 
-        <section>
-
-
+        <section class="section-one" id="section-one" data-number="1" data-state="hidden">
+            <button class=start-quiz-button>Start Quiz</button>
+            <div id="questions-div"></div>
+            <div id="answers-div"></div>
         </section>
+        
+        <section class = section-two id="section-two">
+            <div id="wrong-answer"></div>
+            <div id="correct-answer"></div>
+         </section>
 
 
-        <section>
-
-
-        </section>
-
-
-        <section>
-
-
-        </section>
 
     </main>
 

@@ -4,29 +4,35 @@
 }
 
 
-.span-cointaner,
-.view-score,
-.timer {
+/* .span-cointaner {
     display: inline-block;
     /* margin: 10px 0px 0px 300px; */
-    font-size: 20px;
-    margin: -90px 25px 0px 25px;
+/* margin: 0px 0px 0px 0px; */
 
+
+
+
+#view-score {
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 50px;
+    color: rgb(205, 45, 207);
+    font-weight: bolder;
 }
 
-
-.view-score {
-    float: left;
-}
-
-.timer {
-    float: right;
+#timer {
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 1550px;
+    color: rgb(40, 36, 36);
+    font-weight: bold;
 }
 
 .header {
     display: block;
     justify-content: center;
-    margin: 130px;
+    margin: 50px 0px 0px 0px;
+
 }
 
 .header-div {
@@ -37,12 +43,101 @@
 
 }
 
-#header-first-paragraph {
-    text-align: center;
-    margin-top: 50px;
+#h1-header-class {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
 
 }
 
+
+#header-first-paragraph {
+    display: block;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
 .start-quiz-button {
-    margin: 50px;
+    margin: 50px 0px 100px 5px;
+    margin-left: 850px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: rgb(61, 13, 107);
+    font-size: 20px;
+    color: white;
+
+}
+
+
+.start-quiz-button:hover {
+    background-color: rgb(200, 69, 202);
+}
+
+#questions-div {
+    text-align: center;
+    margin-right: 90px;
+}
+
+
+.section-one {
+
+    display: block;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#answers-div {
+    margin-top: 25px;
+
+}
+
+ul {
+    margin-left: 800px;
+}
+
+li {
+    color: blueviolet;
+    padding: 10px 0px 0px 0px;
+    list-style-type: none;
+
+
+}
+
+.question-btn {
+    margin-left: 800px;
+    background-color: rgb(61, 13, 107);
+    padding: 10px 10px 10px 10px;
+    width: 150px;
+    height: 50px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.question-btn:hover {
+    background-color: rgb(200, 69, 202);
+}
+
+button {
+    padding: 20px;
+    margin-top: 8px;
+    display: block;
+    background-color: rgb(61, 13, 107);
+    color: white;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: rgb(200, 69, 202);
+
 }
