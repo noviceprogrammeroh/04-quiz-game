@@ -6,6 +6,8 @@ var answersElement = document.querySelector("#answers-div");
 var timeElement = document.querySelector("#timer");
 var wrongElementDiv = document.querySelector("#wrong-answer");
 var correctElementDiv = document.querySelector("#correct-answer");
+var showScore = document.querySelector("#show-score");
+var sectionThree = document.querySelector("#section-three")
 var secondsLeft = 60;
 var questionI = 0;
 var wrong;
@@ -61,15 +63,6 @@ var randomArray = [];
 
 var result;
 
-//create random variable
-//     for(var i = 0; i < questions.length; i++) {
-//     var random = Math.floor(Math.random()*questions.length);
-//     questions += questions[random];
-//     console.log("first for loop: " + questions);
-//   }
-
-//console.log(questions[0].correctAnswer)
-
 function startQuiz(questionI) {
   answersElement.textContent = "";
   for (var i = 0; i < questions.length; i++) {
@@ -80,25 +73,37 @@ function startQuiz(questionI) {
   currentAnswers.forEach(function(nextQuestions) {
     var ul = document.createElement("ul");
     var li = document.createElement("li");
-    li.textContent = nextQuestions;
-    answersElement.appendChild(ul)
+    var btn = document.createElement("btn");
+    btn.setAttribute('id', 'ans-btn');
+    btn.textContent = nextQuestions;
+    li.appendChild(btn);
     ul.appendChild(li)
+    answersElement.appendChild(ul)
     li.addEventListener("click", compare)
   })
   
   startButton.remove();
 }
 
-
-
 // Compare if answer is correct or wrong
 function compare(event) {
-  let element = event.target;
-  if (element.matches('li')) {
+  var element = event.target;
+  if (element.matches('btn')) {
     if (element.textContent == questions[questionI].correctAnswer) {
-      console.log("correct")
+      
+      console.log("correct")      
+      //this line code increments our score by 10;
+       score = score + 10;
+      showScore.textContent = score;
+      sectionThree.appendChild(showScore);
+            
     } else {
       console.log("wrong")
+      //subtract the timer
+      clearInterval(timer);
+      secondsLeft = secondsLeft - 10;
+      timeElement.textContent = secondsLeft;
+
     }
   }
   questionI++
@@ -112,5 +117,7 @@ function compare(event) {
 
 // Finsihed function here
 function finished() {
+
+  //va document.
 
 }
