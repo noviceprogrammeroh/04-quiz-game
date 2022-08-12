@@ -7,7 +7,10 @@ var timeElement = document.querySelector("#timer");
 var wrongElementDiv = document.querySelector("#wrong-answer");
 var correctElementDiv = document.querySelector("#correct-answer");
 var showScore = document.querySelector("#show-score");
+var showElement = document.querySelector("#score");
+var sectionTwoElement = document.querySelector("#section-two");
 var sectionThree = document.querySelector("#section-three")
+var paragraphElment = document.querySelector("#paragraph-id");
 var secondsLeft = 60;
 var questionI = 0;
 var wrong;
@@ -64,13 +67,14 @@ var randomArray = [];
 var result;
 
 function startQuiz(questionI) {
+  
   answersElement.textContent = "";
   for (var i = 0; i < questions.length; i++) {
     let currentQuestion = questions[questionI].question;
     var currentAnswers = questions[questionI].answers
     questionsElement.textContent = currentQuestion;
   }
-  currentAnswers.forEach(function(nextQuestions) {
+  currentAnswers.forEach(function (nextQuestions) {
     var ul = document.createElement("ul");
     var li = document.createElement("li");
     var btn = document.createElement("btn");
@@ -78,10 +82,10 @@ function startQuiz(questionI) {
     btn.textContent = nextQuestions;
     li.appendChild(btn);
     ul.appendChild(li)
-    answersElement.appendChild(ul)
+    answersElement.appendChild(ul);
     li.addEventListener("click", compare)
   })
-  
+
   startButton.remove();
 }
 
@@ -90,24 +94,32 @@ function compare(event) {
   var element = event.target;
   if (element.matches('btn')) {
     if (element.textContent == questions[questionI].correctAnswer) {
-      
-      console.log("correct")      
+
+      console.log("correct")
+      correctElementDiv.textContent = "Correct";
+      sectionTwoElement.appendChild(correctElementDiv);
+
       //this line code increments our score by 10;
-       score = score + 10;
+      score = score + 10;
       showScore.textContent = score;
-      sectionThree.appendChild(showScore);
-            
+      //sectionThree.appendChild(showScore);
+      addScore(showScore);
+
     } else {
       console.log("wrong")
+      wrongElementDiv.textContent = "Wrong";
+      sectionTwoElement.appendChild(wrongElementDiv);
+
+
       //subtract the timer
       clearInterval(timer);
       secondsLeft = secondsLeft - 10;
       timeElement.textContent = secondsLeft;
-
     }
+
   }
   questionI++
-  if(questionI >= questions.length) {
+  if (questionI >= questions.length) {
     console.log("finished")
   } else {
     startQuiz(questionI)
@@ -115,9 +127,15 @@ function compare(event) {
 
 }
 
-// Finsihed function here
-function finished() {
+function addScore(showScore) {
+paragraphElment.timeElement="You're all done! Your final score is : " + showScore;
+  showElement.appendChild(paragraphElment);
 
-  //va document.
 
 }
+
+// Finsihed function here
+// function finished() {
+
+
+// }

@@ -14,7 +14,7 @@
 
 #view-score {
     display: inline-block;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 100px;
     color: rgb(205, 45, 207);
     font-weight: bolder;
@@ -22,7 +22,7 @@
 
 #timer {
     display: inline-block;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 1400px;
     color: rgb(40, 36, 36);
     font-weight: bold;
@@ -32,7 +32,7 @@
 .header {
     display: block;
     justify-content: center;
-    margin: 50px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
 
 }
 
@@ -45,7 +45,7 @@
 }
 
 #h1-header-class {
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
 
 }
@@ -54,15 +54,29 @@
 #header-first-paragraph {
     display: block;
     justify-content: center;
-    margin-top: 50px;
-    font-size: 25px;
+    margin-top: 30px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 
+.section-one {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+
+
+}
 
 .start-quiz-button {
-    margin: 50px 0px 0px 500px;
+    /* margin: 50px 0px 0px 500px; */
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     border-radius: 12px;
     background-color: rgb(61, 13, 107);
@@ -77,18 +91,16 @@
 }
 
 #questions-div {
-    text-align: center;
-    margin-right: 90px;
-}
-
-
-.section-one {
     display: block;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
+    font-size: 25px;
+
 }
+
+
+
 
 #answers-div {
     margin-top: 25px;
@@ -96,9 +108,9 @@
 }
 
 ul {
-    display: block;
+    display: flex;
     justify-content: center;
-    text-align: center;
+    /* text-align: center */
 }
 
 li {
@@ -140,5 +152,17 @@ button {
 
 button:hover {
     background-color: rgb(200, 69, 202);
+
+}
+
+#section-two,
+#wrong-answer,
+#correct-answer {
+    text-align: center;
+    margin: 20px 0px 0px 0px;
+    display: block;
+    justify-content: center;
+
+
 
 }
