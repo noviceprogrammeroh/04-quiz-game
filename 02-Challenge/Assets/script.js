@@ -45,7 +45,7 @@ var questions = [
       "String",
       "Number",
       "A variable that can store multiple values",
-      "Object ",
+      "Object "
     ],
     correctAnswer: "A variable that can store multiple values",
   },
@@ -67,7 +67,8 @@ var randomArray = [];
 var result;
 
 function startQuiz(questionI) {
-  
+
+
   answersElement.textContent = "";
   for (var i = 0; i < questions.length; i++) {
     let currentQuestion = questions[questionI].question;
@@ -75,10 +76,11 @@ function startQuiz(questionI) {
     questionsElement.textContent = currentQuestion;
   }
   currentAnswers.forEach(function (nextQuestions) {
+  // sectionOne.setAttribute("style","border: solid 1px; color: blue" );           
     var ul = document.createElement("ul");
     var li = document.createElement("li");
-    var btn = document.createElement("btn");
-    btn.setAttribute('id', 'ans-btn');
+    var btn = document.createElement("button");
+    btn.setAttribute('id', 'ans-btn');    
     btn.textContent = nextQuestions;
     li.appendChild(btn);
     ul.appendChild(li)
@@ -92,47 +94,55 @@ function startQuiz(questionI) {
 // Compare if answer is correct or wrong
 function compare(event) {
   var element = event.target;
-  if (element.matches('btn')) {
+  if (element.matches('button')) {
     if (element.textContent == questions[questionI].correctAnswer) {
 
-      console.log("correct")
-      correctElementDiv.textContent = "Correct";
-      sectionTwoElement.appendChild(correctElementDiv);
+      // console.log("correct")
+      // correctElementDiv.textContent = "Correct";
+      // sectionTwoElement.appendChild(correctElementDiv);
 
-      //this line code increments our score by 10;
+
+     // this line code increments our score by 10;
       score = score + 10;
-      showScore.textContent = score;
-      //sectionThree.appendChild(showScore);
-      addScore(showScore);
+      // showScore.textContent = score;
+      // sectionThree.appendChild(showScore);
 
-    } else {
+      // addScore(showScore);
+
+     } else {
       console.log("wrong")
       wrongElementDiv.textContent = "Wrong";
       sectionTwoElement.appendChild(wrongElementDiv);
-
-
-      //subtract the timer
+    //subtract the timer
       clearInterval(timer);
       secondsLeft = secondsLeft - 10;
-      timeElement.textContent = secondsLeft;
+      timeElement.textContent = "Time: " + secondsLeft + " remaining";
+
+  
     }
 
   }
+
+
   questionI++
   if (questionI >= questions.length) {
-    console.log("finished")
+    paragraphElment.timeElement="You're all done! Your final score is : " + showScore;
+    showElement.appendChild(paragraphElment);
+  
+
   } else {
     startQuiz(questionI)
   }
 
 }
 
-function addScore(showScore) {
-paragraphElment.timeElement="You're all done! Your final score is : " + showScore;
-  showElement.appendChild(paragraphElment);
+// function addScore(showScore) {
 
 
-}
+
+
+
+// }
 
 // Finsihed function here
 // function finished() {

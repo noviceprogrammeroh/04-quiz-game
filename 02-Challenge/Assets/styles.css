@@ -14,7 +14,7 @@
 
 #view-score {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 100px;
     color: rgb(205, 45, 207);
     font-weight: bolder;
@@ -22,7 +22,7 @@
 
 #timer {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 1400px;
     color: rgb(40, 36, 36);
     font-weight: bold;
@@ -32,12 +32,12 @@
 .header {
     display: block;
     justify-content: center;
-    margin: 15px 0px 0px 0px;
+    margin: 5px 0px 0px 0px;
 
 }
 
 .header-div {
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 15px;
     padding-top: 10px;
     text-align: center;
@@ -62,15 +62,15 @@
 
 .section-one {
     display: block;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin: 30px 500px 10px 500px;
     text-align: center;
-
-
+    border-radius: 10px;
+    position: 10px;
+    /*background-color: rgb(38, 44, 44); */
 }
 
+
 .start-quiz-button {
-    /* margin: 50px 0px 0px 500px; */
     display: block;
     text-align: center;
     margin-top: 30px;
@@ -92,6 +92,7 @@
 
 #questions-div {
     display: block;
+    margin-top: 5px;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -109,13 +110,15 @@
 
 ul {
     display: flex;
-    justify-content: center;
-    /* text-align: center */
+    text-align: center;
 }
 
 li {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     color: blueviolet;
-    padding: 10px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
     list-style-type: none;
 
 
@@ -139,13 +142,14 @@ li {
 }
 
 button {
+    width: 150px;
     padding: 20px;
     margin-top: 8px;
     display: block;
     background-color: rgb(61, 13, 107);
     color: white;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 12px;
     cursor: pointer;
 
 }
