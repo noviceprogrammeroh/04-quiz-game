@@ -11,6 +11,7 @@ var showElement = document.querySelector("#score");
 var sectionTwoElement = document.querySelector("#section-two");
 var sectionThree = document.querySelector("#section-three")
 var paragraphElment = document.querySelector("#paragraph-id");
+var sectionInput = document.querySelector("#input-section")
 var secondsLeft = 60;
 var questionI = 0;
 var wrong;
@@ -67,8 +68,6 @@ var randomArray = [];
 var result;
 
 function startQuiz(questionI) {
-
-
   answersElement.textContent = "";
   for (var i = 0; i < questions.length; i++) {
     let currentQuestion = questions[questionI].question;
@@ -97,17 +96,8 @@ function compare(event) {
   if (element.matches('button')) {
     if (element.textContent == questions[questionI].correctAnswer) {
 
-      // console.log("correct")
-      // correctElementDiv.textContent = "Correct";
-      // sectionTwoElement.appendChild(correctElementDiv);
-
-
      // this line code increments our score by 10;
       score = score + 10;
-      // showScore.textContent = score;
-      // sectionThree.appendChild(showScore);
-
-      // addScore(showScore);
 
      } else {
       console.log("wrong")
@@ -117,19 +107,22 @@ function compare(event) {
       clearInterval(timer);
       secondsLeft = secondsLeft - 10;
       timeElement.textContent = "Time: " + secondsLeft + " remaining";
-
-  
+ 
     }
 
   }
 
 
   questionI++
-  if (questionI >= questions.length) {
-    paragraphElment.timeElement="You're all done! Your final score is : " + showScore;
-    showElement.appendChild(paragraphElment);
-  
 
+  if (questionI >= questions.length) {
+    sectionOne.remove();
+    paragraphElment.textContent="You're all done! Your final score is : " + score;
+    sectionThree.appendChild(paragraphElment);
+    
+    recordInitials();
+   
+  
   } else {
     startQuiz(questionI)
   }
@@ -144,8 +137,39 @@ function compare(event) {
 
 // }
 
+
+{/* <section class="input-class" id="input-section">
+<div id="show-score"></div>
+</section> */}
+
+
+
 // Finsihed function here
-// function finished() {
+   function recordInitials() {
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("id", "submit-input-btn");
+    submitBtn.textContent="Submit";
+    var spanElement = document.createElement("span");
+    spanElement.setAttribute("id", "span-input")
+    spanElement.innerHTML="Enter inititals ";
+    var inputHeading = document.createElement("h1");
+    inputHeading.setAttribute("id", "input-heading");
+    var inputScore = document.createElement('input');
+    inputScore.setAttribute("type", "text");
+    inputScore.setAttribute("name","Enter Initials");
+    inputScore.setAttribute("label","Enter initials ");
+    inputScore.textContent="Enter initials ";
+    spanElement.appendChild(inputScore);  
+    showScore.appendChild(spanElement);
+    showScore.appendChild(submitBtn);
+    
+    console.log(showScore)
+    sectionInput.appendChild(showScore);
+
+    
+    
+
+   }
 
 
-// }
+
