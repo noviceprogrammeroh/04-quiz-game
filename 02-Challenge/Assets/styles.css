@@ -206,3 +206,31 @@ button:hover {
     text-align: center;
 
 }
+
+#displayIntialsSection,
+#div-goback-button-id,
+#goback-button-id,
+#clear-button-id {
+
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    text-align: center;
+
+
+
+}
+
+#display-initials {
+
+    margin-top: 60px;
+    margin-right: 700px;
+    margin-left: 700px;
+    padding: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    text-align: center;
+
+}
