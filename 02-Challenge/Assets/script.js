@@ -68,6 +68,8 @@ var randomArray = [];
 
 var result;
 
+
+//funtion that start the quiz
 function startQuiz(questionI) {
   answersElement.textContent = "";
   for (var i = 0; i < questions.length; i++) {
@@ -76,7 +78,6 @@ function startQuiz(questionI) {
     questionsElement.textContent = currentQuestion;
   }
   currentAnswers.forEach(function (nextQuestions) {
-
     var ul = document.createElement("ul");
     var li = document.createElement("li");
     var btn = document.createElement("button");
@@ -91,7 +92,7 @@ function startQuiz(questionI) {
   startButton.remove();
 }
 
-// Compare if answer is correct or wrong
+// function that Compares if answer is correct or wrong
 function compare(event) {
   var element = event.target;
   if (element.matches("button")) {
@@ -102,38 +103,28 @@ function compare(event) {
       console.log("wrong");
       wrongElementDiv.textContent = "Wrong";
       sectionTwoElement.appendChild(wrongElementDiv);
-     
+
       //subtract the timer
       clearInterval(timer);
       secondsLeft = secondsLeft - 10;
       timeElement.textContent = "Time: " + secondsLeft + " remaining";
     }
-
   }
-
-
-
   questionI++;
-
   if (questionI >= questions.length) {
     sectionOne.remove();
     paragraphElment.textContent =
       "You're all done! Your final score is : " + score;
     sectionThree.appendChild(paragraphElment);
-   recordInitials();
-
-  }
-  else {
+    recordInitials();
+  } else {
     startQuiz(questionI);
   }
-
-
 }
 
-
-// Finsihed function here
+// function that records the initials
 function recordInitials() {
-var submitBtn = document.createElement("button");
+  var submitBtn = document.createElement("button");
   submitBtn.setAttribute("id", "submit-input-btn");
   submitBtn.textContent = "Submit";
   var spanElement = document.createElement("span");
@@ -154,7 +145,6 @@ var submitBtn = document.createElement("button");
   console.log(showScore);
   sectionInput.appendChild(showScore);
 
-
   submitBtn.addEventListener("click", displayMessage);
   function displayMessage() {
     paragraphElment.remove();
@@ -162,57 +152,45 @@ var submitBtn = document.createElement("button");
     submitBtn.remove();
     spanElement.remove();
 
-    var displayIntialsSection = document.querySelector("#display-initials-message");
+    var displayIntialsSection = document.querySelector(
+      "#display-initials-message"
+    );
     var displayInitalsDiv = document.querySelector("#display-initials");
-    var message = inputScore.value
-    console.log("target.value ", message)
- 
-    if(displayInitalsDiv) {
+    var message = inputScore.value;
+
+    if (displayInitalsDiv) {
       displayInitalsDiv.textContent = message;
       displayIntialsSection.appendChild(displayInitalsDiv);
-  
     }
-   var gobackBtn  = document.createElement("button");
+
+    //create go back and clear buttons
+    var gobackBtn = document.createElement("button");
     var gobackDiv = document.querySelector("#div-goback-button-id");
-    gobackBtn.setAttribute("id", "goback-button-id")
-    gobackBtn.textContent ="Go Back"
-    gobackBtn.addEventListener('click', goBack)
+    gobackBtn.setAttribute("id", "goback-button-id");
+    gobackBtn.textContent = "Go Back";
+    gobackBtn.addEventListener("click",startQuiz);
     gobackDiv.appendChild(gobackBtn);
     displayIntialsSection.appendChild(gobackDiv);
 
-    var clearHistoryBtn  = document.createElement("button");
-    clearHistoryBtn.setAttribute("id", "clear-button-id")
-    clearHistoryBtn.textContent ="Clear results"
-    clearHistoryBtn.addEventListener('click', clearHistory)
-    gobackDiv.appendChild(clearHistoryBtn);
-    displayIntialsSection.appendChild(gobackDiv);
+    var clearDiv = document.querySelector("#div-clear-button-id");
+    var clearHistoryBtn = document.createElement("button");
+    clearHistoryBtn.setAttribute("id", "clear-button-id");
+    clearHistoryBtn.textContent = "Clear results";
+    clearHistoryBtn.addEventListener("click", clearHistory);
+    clearDiv.appendChild(clearHistoryBtn);
+    displayIntialsSection.appendChild(clearDiv);
+
+    //function that clear the input
+    function clearHistory() {
+      displayInitalsDiv.textContent = "";
+      console.log("testing");
+    }
+
+    startQuiz(questionI);
+    clearHistory();
 
   }
-  if(clearHistoryBtn) {
-    displayInitalsDiv.textContent=""; 
-
-  }
-  
 
 
-  goBack();
-  clearHistory();
-
-  function clearHistory(){
-    displayInitalsDiv.textContent="";
-  
-  }
 
 }
-
-function goBack(){
- // startQuiz(questionI);
-  console.log('Registering');
-}
-
-
-
-
-
-
-
