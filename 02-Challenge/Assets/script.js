@@ -27,11 +27,11 @@ var question;
 var currentQuestion;
 
 //this code is for the input section
-var todoInput = document.querySelector("#todo-text");
-var todoForm = document.querySelector("#todo-form");
+var inputText = document.querySelector("#input-id");
+var form = document.querySelector("#form-id");
 var todoBtn = document.querySelector("#submit-button-id");
-var todoList = document.querySelector("#todo-list");
-var todoCountSpan = document.querySelector("#todo-count");
+var unList = document.querySelector("#ul-elements-id");
+var todoCountSpan = document.querySelector("#score-count");
 var divCard = document.querySelector("#card-id");
 var cardIdSection = document.querySelector("#card-section-id");
 var InitalsSpan = document.querySelector("#initials-span-id");
@@ -136,27 +136,27 @@ function compare(event) {
     console.log("this is the paragraphElement: ", paragraphElment);
     divCard.style.display = "block";
 
-    renderTodos();
+    renderListOfScores();
   } else {
     startQuiz(questionI);
   }
 }
 
-var todos = [];
+var inputArray = [];
 
-// The following function renders items in a todo list as <li> elements
-function renderTodos() {
+//This conder renders a list of scores entered
+function renderListOfScores() {
 
-  todoList.innerHTML = "";
+  unList.innerHTML = "";
  
   InitalsSpan.textContent = console.log(todoCountSpan);
 
   // Render a new li for each todo
-  for (var i = 0; i < todos.length; i++) {
+  for (var i = 0; i < inputArray.length; i++) {
 
-    var todo = todos[i];
+    var todo = inputArray[i];
 
-    if(todoInput === paragraphElment) {
+    if(inputText === paragraphElment) {
       todoCountSpan.textContent=paragraphElment;
     }
 
@@ -166,8 +166,6 @@ function renderTodos() {
     liRenderElement.textContent=todo + " " +  todoCountSpan;
     liRenderElement.setAttribute("data-index", i);
 
-    console.log(liRenderElement)
-
     var clearButton = document.createElement("button");
     clearButton.setAttribute("id", "clear-render-btn");
 
@@ -176,69 +174,64 @@ function renderTodos() {
     
     liRenderElement.appendChild(clearButton);
     cardParagraph.appendChild(todoCountSpan);
-    todoList.appendChild(liRenderElement);
+    unList.appendChild(liRenderElement);
 
   }
-
-
-
 
 }
 
 
+function initialize() {
 
-function init() {
+  var storedItems = JSON.parse(localStorage.getItem("todos"));
 
-  var storedTodos = JSON.parse(localStorage.getItem("todos"));
-
-
-  if (storedTodos !== null) {
-    todos = storedTodos;
+  if (storedItems !== null) {
+    inputArray = storedItems;
   }
 
 
-  renderTodos();
+  renderListOfScores();
 }
 
-function storeTodos() {
+function storeInputs() {
   
-  localStorage.setItem("todos", JSON.stringify(todos));
+  localStorage.setItem("todos", JSON.stringify(inputArray));
 }
 
 
-todoForm.addEventListener("submit", function (event) {
+form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  var todoText = todoInput.value.trim();
+  var input = inputText.value.trim();
 
 
-  if (todoText === "") {
+  if (input === "") {
     return;
   }
 
 
-  todos.push(todoText);
-  todoInput.value = "";
+  inputArray.push(input);
+  inputText.value = "";
 
 
-  storeTodos();
-  renderTodos();
+  storeInputs();
+  renderListOfScores();
 });
 
 
-todoList.addEventListener("click", function (event) {
+unList.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches("button") === true) {
     
     var index = element.parentElement.getAttribute("data-index");
-    todos.splice(index, 1);
+    inputArray.splice(index, 1);
 
 
-    storeTodos();
-    renderTodos();
+    storeInputs();
+    renderListOfScores();
   }
 });
 
 
-init();
+initialize();
