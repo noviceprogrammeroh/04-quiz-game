@@ -25,6 +25,7 @@ var spanElement = document.createElement("span");
 var displayInitalsDiv = document.querySelector("#display-initials");
 var question;
 var currentQuestion;
+var gobackDivElement = document.querySelector("#go-back-div-id");
 
 //this code is for the input section
 var inputText = document.querySelector("#input-id");
@@ -136,29 +137,30 @@ function compare(event) {
     console.log("this is the paragraphElement: ", paragraphElment);
     divCard.style.display = "block";
 
-    renderListOfScores();
+    renderListOfScores(paragraphElment);
   } else {
     startQuiz(questionI);
   }
+  
 }
+
 
 var inputArray = [];
 
 //This conder renders a list of scores entered
-function renderListOfScores() {
-
+function renderListOfScores(paragraphElment) {
+  question;
   unList.innerHTML = "";
  
   InitalsSpan.textContent = console.log(spanCountElement);
 
-  // Render a new li for each todo
   for (var i = 0; i < inputArray.length; i++) {
-
     var record = inputArray[i];
+    // if(inputText === score) {
+    //   spanCountElement.textContent=score;
+    // }
 
-    if(inputText === paragraphElment) {
-      spanCountElement.textContent=paragraphElment;
-    }
+    spanCountElement.textContent = paragraphElment;
 
     var liRenderElement = document.createElement("li");
     liRenderElement.setAttribute("id", "li-render-element-id");
@@ -182,15 +184,13 @@ function renderListOfScores() {
 
 
 function initialize() {
-
-  var storedItems = JSON.parse(localStorage.getItem("todos"));
+var storedItems = JSON.parse(localStorage.getItem("todos"));
 
   if (storedItems !== null) {
     inputArray = storedItems;
   }
 
-
-  renderListOfScores();
+renderListOfScores();
 }
 
 function storeInputs() {
@@ -201,18 +201,14 @@ function storeInputs() {
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-
   var input = inputText.value.trim();
-
 
   if (input === "") {
     return;
   }
 
-
   inputArray.push(input);
   inputText.value = "";
-
 
   storeInputs();
   renderListOfScores();
@@ -223,15 +219,29 @@ unList.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches("button") === true) {
-    
     var index = element.parentElement.getAttribute("data-index");
     inputArray.splice(index, 1);
-
 
     storeInputs();
     renderListOfScores();
   }
 });
 
-
 initialize();
+
+//this section neeeds more
+var goBackBtn = document.createElement("button");
+goBackBtn.setAttribute("id", "go-back-btn");
+goBackBtn.textContent="Go back";
+
+gobackDivElement.appendChild(goBackBtn);
+
+goBackBtn.addEventListener("click", gobackFunction);
+
+function gobackFunction(questionI) {
+  startQuiz(questionI);
+}
+
+gobackFunction(questionI);
+
+
