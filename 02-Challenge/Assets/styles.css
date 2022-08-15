@@ -5,13 +5,6 @@ body {
 }
 
 
-/* .span-cointaner {
-    display: inline-block;
-    /* margin: 10px 0px 0px 300px; */
-/* margin: 0px 0px 0px 0px; */
-
-
-
 
 #view-score {
     display: inline-block;
@@ -106,20 +99,23 @@ body {
 
 #answers-div {
     margin-top: 25px;
-    border: solid gray 1px;
+    margin-right: 200px;
+    margin-left: 10px;
+    /* border: solid gray 1px;
     border-radius: 20px;
-    background-color: rgb(117, 113, 110);
+    background-color: rgb(117, 113, 110); */
 
 }
 
-ul {
+#start-ul {
     display: flex;
-    text-align: center;
+    text-align: left;
+
 }
 
 li {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 300px;
+    margin-right: 400px;
     text-align: center;
     color: blueviolet;
     padding: 0px 0px 0px 0px;
@@ -164,10 +160,11 @@ button:hover {
 #section-two,
 #wrong-answer,
 #correct-answer {
-    text-align: center;
-    margin: 20px 0px 0px 0px;
     display: block;
+    text-align: center;
+    margin: 30px 30px 0px 0px;
     justify-content: center;
+    font-weight: bold;
 
 }
 
@@ -233,4 +230,67 @@ button:hover {
     font-size: 30px;
     text-align: center;
 
+}
+
+.card {
+    text-align: center;
+    display: none;
+    border-radius: 8px;
+    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+        rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+    margin: 60px auto;
+    padding: 10px;
+    height: 40vw;
+    width: 75vw;
+
+}
+
+#submit-button-id {
+    margin-top: -40px;
+    margin-left: 600px
+}
+
+#todo-list {
+    display: block;
+    list-style-type: none;
+    margin-right: 300px;
+    margin-left: 300px;
+    padding: 0;
+
+}
+
+#li-render-element-id {
+    height: 60px;
+    margin-top: 5px;
+    margin-right: 300px;
+    margin-left: 300px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #9da0a4;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.5;
+}
+
+#li-render-element-id:before {
+    content: "\200B";
+    position: absolute;
+}
+
+#li-render-element-id::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+#li-render-element-id #clear-render-btn,
+#card-paragraph-id {
+    margin-top: -35px;
+    margin-left: 600px;
+    border: none;
+    height: 60px;
+    cursor: pointer;
+    background-color: #3496ff;
+    color: white;
+    font-size: 1em;
 }

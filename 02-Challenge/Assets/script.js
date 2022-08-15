@@ -19,6 +19,23 @@ var questionI = 0;
 var wrong;
 var correct;
 var score = 0;
+var inputScore = document.createElement("input");
+var submitBtn = document.createElement("button");
+var spanElement = document.createElement("span");
+var displayInitalsDiv = document.querySelector("#display-initials");
+var question;
+var currentQuestion;
+
+//this code is for the input section
+var todoInput = document.querySelector("#todo-text");
+var todoForm = document.querySelector("#todo-form");
+var todoBtn = document.querySelector("#submit-button-id");
+var todoList = document.querySelector("#todo-list");
+var todoCountSpan = document.querySelector("#todo-count");
+var divCard = document.querySelector("#card-id");
+var cardIdSection = document.querySelector("#card-section-id");
+var InitalsSpan = document.querySelector("#initials-span-id");
+var cardParagraph = document.querySelector("#card-paragraph-id");
 
 //An event Listener  that will display the timer
 startButton.addEventListener("click", function () {
@@ -42,7 +59,7 @@ var questions = [
   },
 
   {
-    question: "What is an Array ?",
+    question: "What is an Array?",
     answers: [
       "String",
       "Number",
@@ -51,7 +68,6 @@ var questions = [
     ],
     correctAnswer: "A variable that can store multiple values",
   },
-
   {
     question: "What is object?",
     answers: [
@@ -64,21 +80,22 @@ var questions = [
   },
 ];
 
-var randomArray = [];
-
-var result;
-
-
 //funtion that start the quiz
 function startQuiz(questionI) {
+
   answersElement.textContent = "";
+
   for (var i = 0; i < questions.length; i++) {
-    let currentQuestion = questions[questionI].question;
+    var currentQuestion = questions[questionI].question;
+    //console.log("current question variable ",currentQuestion)
     var currentAnswers = questions[questionI].answers;
     questionsElement.textContent = currentQuestion;
+
   }
+
   currentAnswers.forEach(function (nextQuestions) {
     var ul = document.createElement("ul");
+    ul.setAttribute("id", "start-ul");
     var li = document.createElement("li");
     var btn = document.createElement("button");
     btn.setAttribute("id", "ans-btn");
@@ -101,7 +118,7 @@ function compare(event) {
       score = score + 10;
     } else {
       console.log("wrong");
-      wrongElementDiv.textContent = "Wrong";
+      wrongElementDiv.textContent = "WRONG!";
       sectionTwoElement.appendChild(wrongElementDiv);
 
       //subtract the timer
@@ -116,81 +133,112 @@ function compare(event) {
     paragraphElment.textContent =
       "You're all done! Your final score is : " + score;
     sectionThree.appendChild(paragraphElment);
-    recordInitials();
+    console.log("this is the paragraphElement: ", paragraphElment);
+    divCard.style.display = "block";
+
+    renderTodos();
   } else {
     startQuiz(questionI);
   }
 }
 
-// function that records the initials
-function recordInitials() {
-  var submitBtn = document.createElement("button");
-  submitBtn.setAttribute("id", "submit-input-btn");
-  submitBtn.textContent = "Submit";
-  var spanElement = document.createElement("span");
-  spanElement.setAttribute("id", "span-input");
-  spanElement.innerHTML = "Enter inititals ";
-  var inputHeading = document.createElement("h1");
-  inputHeading.setAttribute("id", "input-heading");
-  var inputScore = document.createElement("input");
-  inputScore.setAttribute("type", "text");
-  inputScore.setAttribute("name", "Enter Initials");
-  inputScore.setAttribute("label", "Enter initials ");
-  inputScore.textContent = "Enter initials ";
-  headerDiv.remove();
-  wrongElementDiv.remove();
-  spanElement.appendChild(inputScore);
-  showScore.appendChild(spanElement);
-  showScore.appendChild(submitBtn);
-  console.log(showScore);
-  sectionInput.appendChild(showScore);
+var todos = [];
 
-  submitBtn.addEventListener("click", displayMessage);
-  function displayMessage() {
-    paragraphElment.remove();
-    inputScore.remove();
-    submitBtn.remove();
-    spanElement.remove();
+// The following function renders items in a todo list as <li> elements
+function renderTodos() {
 
-    var displayIntialsSection = document.querySelector(
-      "#display-initials-message"
-    );
-    var displayInitalsDiv = document.querySelector("#display-initials");
-    var message = inputScore.value;
+  todoList.innerHTML = "";
+ 
+  InitalsSpan.textContent = console.log(todoCountSpan);
 
-    if (displayInitalsDiv) {
-      displayInitalsDiv.textContent = message;
-      displayIntialsSection.appendChild(displayInitalsDiv);
+  // Render a new li for each todo
+  for (var i = 0; i < todos.length; i++) {
+
+    var todo = todos[i];
+
+    if(todoInput === paragraphElment) {
+      todoCountSpan.textContent=paragraphElment;
     }
 
-    //create go back and clear buttons
-    var gobackBtn = document.createElement("button");
-    var gobackDiv = document.querySelector("#div-goback-button-id");
-    gobackBtn.setAttribute("id", "goback-button-id");
-    gobackBtn.textContent = "Go Back";
-    gobackBtn.addEventListener("click",startQuiz);
-    gobackDiv.appendChild(gobackBtn);
-    displayIntialsSection.appendChild(gobackDiv);
+    var liRenderElement = document.createElement("li");
+    liRenderElement.setAttribute("id", "li-render-element-id");
+    liRenderElement.textContent = todo;
+    liRenderElement.textContent=todo + " " +  todoCountSpan;
+    liRenderElement.setAttribute("data-index", i);
 
-    var clearDiv = document.querySelector("#div-clear-button-id");
-    var clearHistoryBtn = document.createElement("button");
-    clearHistoryBtn.setAttribute("id", "clear-button-id");
-    clearHistoryBtn.textContent = "Clear results";
-    clearHistoryBtn.addEventListener("click", clearHistory);
-    clearDiv.appendChild(clearHistoryBtn);
-    displayIntialsSection.appendChild(clearDiv);
+    console.log(liRenderElement)
 
-    //function that clear the input
-    function clearHistory() {
-      displayInitalsDiv.textContent = "";
-      console.log("testing");
-    }
+    var clearButton = document.createElement("button");
+    clearButton.setAttribute("id", "clear-render-btn");
 
-    startQuiz(questionI);
-    clearHistory();
+    clearButton.textContent = "Clear";
+    cardParagraph.textContent="";
+    
+    liRenderElement.appendChild(clearButton);
+    cardParagraph.appendChild(todoCountSpan);
+    todoList.appendChild(liRenderElement);
 
   }
 
 
 
+
 }
+
+
+
+function init() {
+
+  var storedTodos = JSON.parse(localStorage.getItem("todos"));
+
+
+  if (storedTodos !== null) {
+    todos = storedTodos;
+  }
+
+
+  renderTodos();
+}
+
+function storeTodos() {
+  
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+
+todoForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  var todoText = todoInput.value.trim();
+
+
+  if (todoText === "") {
+    return;
+  }
+
+
+  todos.push(todoText);
+  todoInput.value = "";
+
+
+  storeTodos();
+  renderTodos();
+});
+
+
+todoList.addEventListener("click", function (event) {
+  var element = event.target;
+
+  if (element.matches("button") === true) {
+    
+    var index = element.parentElement.getAttribute("data-index");
+    todos.splice(index, 1);
+
+
+    storeTodos();
+    renderTodos();
+  }
+});
+
+
+init();
