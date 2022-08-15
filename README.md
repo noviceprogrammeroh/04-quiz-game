@@ -12,4 +12,9 @@ This is a timed quiz game application using JavaScript
 - Created variables to manipulate the DOM
 - Refactored code
 
+## Links ##
+- GitHub Repository
+(https://github.com/noviceprogrammeroh/04-quiz-game)
 
+- GitHub Pages
+(https://noviceprogrammeroh.github.io/04-quiz-game/)
