@@ -31,7 +31,7 @@ var inputText = document.querySelector("#input-id");
 var form = document.querySelector("#form-id");
 var todoBtn = document.querySelector("#submit-button-id");
 var unList = document.querySelector("#ul-elements-id");
-var todoCountSpan = document.querySelector("#score-count");
+var spanCountElement = document.querySelector("#score-count");
 var divCard = document.querySelector("#card-id");
 var cardIdSection = document.querySelector("#card-section-id");
 var InitalsSpan = document.querySelector("#initials-span-id");
@@ -149,21 +149,21 @@ function renderListOfScores() {
 
   unList.innerHTML = "";
  
-  InitalsSpan.textContent = console.log(todoCountSpan);
+  InitalsSpan.textContent = console.log(spanCountElement);
 
   // Render a new li for each todo
   for (var i = 0; i < inputArray.length; i++) {
 
-    var todo = inputArray[i];
+    var record = inputArray[i];
 
     if(inputText === paragraphElment) {
-      todoCountSpan.textContent=paragraphElment;
+      spanCountElement.textContent=paragraphElment;
     }
 
     var liRenderElement = document.createElement("li");
     liRenderElement.setAttribute("id", "li-render-element-id");
-    liRenderElement.textContent = todo;
-    liRenderElement.textContent=todo + " " +  todoCountSpan;
+    liRenderElement.textContent = record;
+    liRenderElement.textContent=record + " " +  spanCountElement;
     liRenderElement.setAttribute("data-index", i);
 
     var clearButton = document.createElement("button");
@@ -173,7 +173,7 @@ function renderListOfScores() {
     cardParagraph.textContent="";
     
     liRenderElement.appendChild(clearButton);
-    cardParagraph.appendChild(todoCountSpan);
+    cardParagraph.appendChild(spanCountElement);
     unList.appendChild(liRenderElement);
 
   }
